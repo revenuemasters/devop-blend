@@ -1,0 +1,43 @@
+#<% require 'kitchen-sync' %>
+---
+driver:
+  availability_zone: b
+  aws_ssh_key_id: revenuemasters-dev-us-east-1-control
+  iam_profile_name: dev-1-application-stack-AppIamProfile-1CQFXD5PVLSOM
+  image_id: ami-3684805c
+  instance_type: m3.medium
+  name: ec2
+  region: us-east-1
+  security_group_ids: ["sg-feafbd8f"] # SSH access
+  subnet_id: subnet-35274819
+  # shared_credentials_profile: revenuemasters-dev # ~/.aws/credentials
+  interface: dns
+
+provisioner:
+  attributes:
+    citadel:
+      access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+      secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    cfn:
+      properties:
+        secrets_bucket: 'revenuemasters-dev-1-secrets'
+        importer_private_ip: '1.2.3.4'
+        config: "{\"sites\":{\"site1\":{\"host\":\"site1.revenuemasters.com\"}}}"
+  name: chef_solo
+  require_chef_omnibus: 12.5.1
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: sftp
+    run_list:
+      - role[sftp]
+  - name: app
+    run_list:
+      - role[app]
+
+transport:
+  name: sftp
+  ssh_key: ~/.ssh/revenuemasters-dev-us-east-1-control.pem
+  username: ubuntu

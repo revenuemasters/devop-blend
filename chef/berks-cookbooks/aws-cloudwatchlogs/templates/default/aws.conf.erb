@@ -1,0 +1,10 @@
+[plugins]
+cwlogs = cwlogs
+[default]
+region = <%= @awsRegion %>
+<% if ! @awsAccessKey.nil? %>
+aws_access_key_id = <%= @awsAccessKey %>
+<% end %>
+<% if ! @awsSecretKey.nil? %>
+aws_secret_access_key = <%= @awsSecretKey %>
+<% end %>

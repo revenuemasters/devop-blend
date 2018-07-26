@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+LOGFILE="/var/log/clamav/clamav-$(date +'%Y-%m-%d').log";
+HOST="$(hostname --long)";
+
+# Update ClamAV database
+echo "Looking for ClamAV database updates...";
+freshclam --quiet;
+
+TODAY=$(date +%u);
+
+echo "Starting a full scan.";
+# be nice to others while scanning the entire root
+nice -n5 clamscan -ri / --exclude-dir=/sys/ &>"$LOGFILE";
+
+# get the value of "Infected lines"
+MALWARE=$(tail "$LOGFILE"|grep Infected|cut -d" " -f3);
+
+# if the value is not equal to zero, send an alert
+if [ "$MALWARE" -ne "0" ]; then
+    aws sns publish --region <%= @region %> --topic-arn <%= @sns_alarm_topic %> --message "$MALWARE instances of malware found on $HOST: See $LOGFILE"
+fi
+
+echo "The script has finished.";
+exit 0;

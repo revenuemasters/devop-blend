@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# backup the database
+mysqldump --max_allowed_packet=512M --routines -u<%= @database_username %> -p<%= @database_password %> -h <%= @database_hostname %> <%= @database_database %> | gzip -c > /encrypted/backups/<%= @site %>/`date +%Y%m%d`_<%= @database_database %>.sql.gz;
+
+if [[ ${PIPESTATUS[@]} == "0 0" ]]; then
+    # If trigger exists then we have new files to import
+    if [ ! -f /encrypted/sftp/rmedi/from_rmedi/<%= @site %>/trigger/rmedi_trigger.txt ]; then
+         echo "Error kicking off <%= @site %> daily import: Trigger file not found!"
+    else
+         # Trigger File Found.
+         # Run the import
+         cd /var/www
+         nohup ./run_<%= @site %>.sh <%= @site %>/current/application/cmd/import.php import-master > /encrypted/client_data/applogs/<%= @site %>/`date +%Y%m%d`_DailyImport_<%= @site %>.txt &
+         nohup php ./<%= @site %>-import-monitor.php <%= @site %>/current/application/cmd/import.php /encrypted/client_data/applogs/<%= @site %>/`date +%Y%m%d`_DailyImport_<%= @site %>.txt &
+    fi
+    echo "Daily import on <%= @site %> kicked off successful."
+else
+    echo "Error kicking off <%= @site %> daily import: Was not able to connect."
+fi

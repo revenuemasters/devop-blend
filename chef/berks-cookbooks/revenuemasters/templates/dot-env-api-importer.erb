@@ -1,0 +1,32 @@
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=<%= @app_key %>
+APP_URL=<%= @app_url %>
+
+DB_CONNECTION=mysql
+DB_HOST=<%= @database_hostname %>
+DB_PORT=3306
+DB_DATABASE=<%= @database_database %>
+DB_USERNAME=<%= @database_username %>
+DB_PASSWORD=<%= @database_password %>
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sqs
+
+AWS_REGION=<%= @aws_region %>
+ENV_NAME=<%= @worker_url %>
+WORKER_QUEUE_URL=<%= @worker_url %>
+# null since we are using EC2 instance roles
+AWS_KEY=null
+AWS_SECRET=null
+
+MAIL_DRIVER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+
+SOAP_USERNAME=<%= @soap_username %>
+SOAP_PASSWORD=<%= @soap_password %>

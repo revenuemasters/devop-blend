@@ -1,0 +1,152 @@
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+phpSettings.memory_limit = "3000M"
+phpSettings.max_execution_time = 9000000
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+appnamespace = "Application"
+import.dir = "/encrypted/client_data/<%= @site %>/processing/temp"
+import.process = "<%= @import_process %>" ; path where the imported files will need to be picked up when importing
+import.write_off = '/encrypted/client_data/<%= @site %>/outgoing'
+import.oop = "<%= @import_oop %>" ; on means that it will pull payment from the 835 files; off means it will ignore payments and pull only PR and adjustments and claim statuses
+import.shared = "/encrypted/client_data/shared" ; shared path on the server for all clients
+import.allowable_report = "/encrypted/client_data/<%= @site %>/outgoing"
+uploads.path = APPLICATION_PATH "/../data/upload-files"
+lateCharges.path =  APPLICATION_PATH "/../data/1/test2/claims/"
+receiptReport.path =  APPLICATION_PATH "/../data/1/test2/claims/"
+writeReportIn.path =  APPLICATION_PATH "/../data/1/test2/claims/"
+flatFrom835.path =  APPLICATION_PATH "/../data/1/test2/claims/"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.frontController.params.displayExceptions = 0
+autoloaderNamespaces[] = "SpamCaptcher_"
+autoloaderNamespaces[] = "PHPExcel_"
+autoloaderNamespaces[] = "PHPExcel"
+autoloaderNamespaces[] = "BaseEncode_"
+autoloaderNamespaces[] = "BaseEncode"
+
+aws_region = "<%= @aws_region %>"
+env_name = "<%= @env_name %>"
+worker_queue_url = "<%= @worker_queue_url %>"
+
+filetrigger.name = "rmedi_trigger.txt"
+mappedClient = "<%= @mapped_client %>" ;will need to be a short acronim for the client name so if we need to do some custom coding for them we can use that
+sanitize_payor_names = "<%= @sanitize_payor_names %>";
+payor_code_by_payor_name = "<%= @payor_code_by_payor_name %>" ; yes/no if we will identify the payors from the 837 or maaping document by the name or not the code ;example: Tyrone, SCA
+overwrite_payor = "<%= @overwrite_payor %>" ; yes/no if we want the payor to be overwriten when rebills come in
+insurance_payments_pulled_from_835 = "<%= @insurance_payments_pulled_from_835 %>"  ; yes/no same as import.oop example: Evan
+update_contract_mapping = "no" ;yes/no will update the contract mapping dynamically from the 837 example: TCH, Evan, Tyrone
+enable_multiple_physicians = "<%= @enable_multiple_physicians %>" ; Only string yes or string no, lowercase. No integers. No booleans. Enables multiple physicians for an account number.
+masterSeparator = "<%= @master_separator %>" ; pipe will be the standard separatof for files provided by rmedi
+system.billed_and_aging_days = 1 ;default as 1
+system.timely_filing_days = 1 ;default as 1
+INVERT_ADJUSTMENT_VALUE = <%= @invert_adjustment_value %> ;1 means that the payment value is convert (example: Tyrone); 0: it remains as is
+invert_payment_report_amounts = <%= @invert_payment_report_amounts %>
+INVERT_WRITEOFF_VALUE = <%= @invert_writeoff_value %> ;1 means that writeoff values will be inverted
+QMART_QUEUE_LOW_RISK_INSURANCE = <%= @qmart_queue_low_risk_insurance %> ;1 means the Smart Queue will check the insurance underpayment for Low Risk queue
+map_pmt_file = "<%= @map_pmt_file %>" ;the first name is the variable in RA; after the pipe the original filed in the header as it shows in the pmt file; IF string is empty --> no mapping is required
+map_adj_file = "<%= @map_adj_file %>"
+replace_header_pmt_file = "<%= @replace_header_pmt_file %>" ;a string with header values separated by commas, that will replace the current header from the file provided by the client
+crosswalkEnabled = <%= @crosswalk_enabled %>
+system.default_filing_days_if_not_modeled = 180 ;default as 180
+logger.warnings = "/encrypted/client_data/<%= @site %>/applogs/"
+logger.receivers = "operations@revenuemasters.com" ;list emails separated with commas
+logger.max_size_attachment = 1048576 ; equal to 1 Mega bytes. Files with size over logger.max_size_attachment are not emailed
+default_logo = "<%= @logo %>" ;logo .jpg name used by the system
+default_name_as_image = "rmralogo.png"
+scripts_log_path = "/encrypted/client_data/<%= @site %>/applogs/"
+empty_payor_name_in_mapping_file = "<%= @empty_payor_name %>" ;yes/no if the payor name is missing from the mapping file
+ucrn_import.csv_headers = '<%= @ucrn_import_csv_headers %>'
+ucrn_import.separator = '<%= @ucrn_import_separator %>'
+ucrn_import.is_csv = '<%= @ucrn_import_is_csv %>'
+ucrn_import.ucrn.start = <%= @ucrn_import_ucrn_start %>
+ucrn_import.ucrn.length = <%= @ucrn_import_ucrn_length %>
+ucrn_import.account.start = <%= @ucrn_import_account_start %>
+ucrn_import.account.length = <%= @ucrn_import_account_length %>
+find_account_by_ucrn = "<%= @find_account_by_ucrn %>"
+<% if @go_live_date -%>
+go_live_date = '<%= @go_live_date %>'
+<% end -%>
+
+sequestrationAdjustment = <%= @sequestration_adjustment %>
+
+<% @ignore_quick_numbers.each do |ignore| -%>
+ignoreQuickNumbers[] = '<%= ignore %>';
+<% end -%>
+
+email_host = "<%= @email_host %>"
+email_username = "<%= @email_username %>"
+email_password = "<%= @email_password %>"
+
+db.adapter = "PDO_MYSQL"
+db.params.dbname = "<%= @database_database %>"
+db.params.host = "<%= @database_hostname %>"
+db.params.username = "<%= @database_username %>"
+db.params.password = "<%= @database_password %>"
+db.isDefaultTableAdapter = true
+
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+
+<% if @claim_import_summary -%>
+;--------------------------------------------------------------------------
+; Claim Import Summary
+;--------------------------------------------------------------------------
+;
+; It sends a summary of an 837 with the following data:
+;   File name
+;   Total Claims
+;   Total Primary
+;   Total Secondary/Tertiary
+;   Total Charges
+;   Claims per payer code
+;
+claimImportSummary = 1
+claimImportPath = /encrypted/client_data/applogs/<%= @site %>/claim_import_summary
+<% @claim_import_summary_recipients.each do |email| -%>
+claimImportRecipients[] = <%= email %>
+<% end -%>
+<% end -%>
+
+<% if @custom -%>
+; ------------------------------
+;     Customization section
+; ------------------------------
+; use the logo from following line for a generic MyCustomLogo Logo
+; custom.app.default_logo = "/pics/MCL_logo.jpg"
+custom.app.css_overwrite = <%= @custom.app.css_overwrite %>
+custom.app.name = "<%= @custom.app.name %>"
+custom.app.default_logo = "<%= @custom.app.default_logo %>"
+custom.app.name_as_image = "<%= @custom.app.name_as_image %>"
+custom.app.powered_by = "<%= @custom.app.powered_by %>"
+
+; You need to uncomment the lines that enable the customization
+; plugin on the back-end
+; ------------------------------
+; ZF Plugins should reside in includePaths.library . "/Plugins"
+; ------------------------------
+autoloaderNamespaces[] = "Plugins"
+resources.frontController.plugins[] = "Plugins_Customization"
+<% end -%>
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.frontController.params.displayExceptions = 1
+phpSettings.error_reporting = E_ERROR
+showDebug = true
+phpSettings.track_errors = 1
+
+[proj.revenuemasters.com : development]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.frontController.params.displayExceptions = 1
+phpSettings.track_errors = 1
+phpSettings.error_reporting = E_ERROR
+showDebug = true
+resources.frontController.params.displayExceptions = 1

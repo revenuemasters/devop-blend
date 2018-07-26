@@ -1,0 +1,15 @@
+CONFIG_FILE=/application/configs/application.ini
+
+# Importer information and credentials to transfer output files
+SFTPSERVER=<%= @sftp_host %>
+SFTPUSER=<%= @site %>
+SFTPPASSWORD=<%= @sftp_password %>
+
+# Server and credentials to use when sending emails
+MAIL_HOST="<%= @email_host %>"
+MAIL_PORT=<%= @email_port %>
+MAIL_AUTH=<%= @email_auth %>
+MAIL_USERNAME=<%= @email_username %>
+MAIL_PASSWORD="<%= @email_password %>"
+# Multiple receivers can be defined with a comma separated list: "john@doe.com,jane@whatever.com,etc@otherdomain.com"
+MAIL_RECEIVER="<%= @post_import_alerts_receivers %>""

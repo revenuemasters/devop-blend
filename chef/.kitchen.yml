@@ -1,0 +1,51 @@
+#<% require 'kitchen-sync' %>
+---
+driver:
+  name: vagrant
+
+provisioner:
+  attributes:
+    citadel:
+      access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+      secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+    cfn:
+      properties:
+        secrets_bucket: 'revenuemasters-dev-1-secrets'
+        importer_private_ip: '1.2.3.4'
+        config: "{\"sites\":{\"site1\":{\"host\":\"site1.revenuemasters.com\"}}}"
+  name: chef_solo
+  require_chef_omnibus: 12.5.1
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: app
+    run_list:
+      - recipe[revenuemasters::app]
+  - name: auditd
+    run_list:
+      - recipe[revenuemasters::auditd]
+  - name: greeting
+    run_list:
+      - recipe[revenuemasters::ascii_greeting]
+  - name: openssh
+    run_list:
+        - recipe[openssh]
+    attributes:
+        openssh:
+            server:
+                client_alive_interval: 5
+                client_alive_count_max: 0
+  - name: php5
+    run_list:
+        - recipe[revenuemasters::php5]
+  - name: rm
+    run_list:
+      - recipe[revenuemasters::default]
+  - name: sftp
+    run_list:
+      - role[sftp]
+  - name: staff
+    run_list:
+      - recipe[revenuemasters::staff]

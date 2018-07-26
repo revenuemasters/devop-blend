@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+<% @sites.each do |site| %>
+
+echo "Dumping and compressing <%= site %>"
+mysqldump --max_allowed_packet=512M -u<%= @database_username %> -p<%= @database_password %> -h <%= @database_hostname %> revenuemasters_<%= site %> > /encrypted/backups/<%= site %>/`date +%Y%m%d`_revenuemasters_<%= site %>_dumped_by_dev.sql
+gzip /encrypted/backups/<%= site %>/`date +%Y%m%d`_revenuemasters_<%= site %>_dumped_by_dev.sql
+
+<% end %>

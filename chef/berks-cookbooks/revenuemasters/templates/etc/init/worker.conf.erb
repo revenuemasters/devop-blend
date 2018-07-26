@@ -1,0 +1,51 @@
+# /etc/init/worker.conf - worker config
+
+# See workers.conf for how to manage all worker instances at once.
+#
+# Save this config as /etc/init/worker.conf then manage the workers with:
+#   sudo start worker index=0
+#   sudo stop worker index=0
+#   sudo status worker index=0
+#
+# Hack Upstart's reload command to 'quiet' worker:
+#
+#   sudo reload worker index=0
+#
+# or use the service command:
+#   sudo service worker {start,stop,restart,status}
+#
+
+description "<%= @site %> Background Worker"
+
+# This script is not meant to start on bootup, workers.conf
+# will start all sidekiq instances explicitly when it starts.
+#start on runlevel [2345]
+#stop on runlevel [06]
+
+# change to match your deployment user
+# setuid deploy
+# setgid deploy
+# env HOME=/home/deploy
+
+respawn
+respawn limit 3 30
+
+# TERM is sent by worker-queue.php when stopping. Without declaring these as
+# normal exit codes, it just respawns.
+normal exit 0 TERM
+
+# Older versions of Upstart might not support the reload command and need
+# this commented out.
+reload signal USR1
+
+# Upstart waits 5 seconds by default to kill the a process. Increase timeout to
+# give worker process enough time to exit.
+kill timeout 15
+
+instance $index
+
+<% if @worker_process -%>
+exec <%= @worker_process %>
+<% else -%>
+exec /usr/bin/php /var/www/<%= @site %>/current/application/cmd/worker-queue.php
+<% end -%>

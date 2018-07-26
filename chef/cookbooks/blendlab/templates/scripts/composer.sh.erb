@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+COMMAND=$1
+
+if [ "${COMMAND}" == "install" ] || [ "${COMMAND}" == "update" ] || [ "${COMMAND}" == "dumpautoload" ]; then
+
+<% @sites.each do |site| %>
+
+    printf "\nRunning composer ${COMMAND} on <%= site %> \n"
+    cd /var/www/<%= site %>/current
+    composer "${COMMAND}"
+
+<% end %>
+
+else
+    echo "You can only run install, update or dumpautoload!"
+fi

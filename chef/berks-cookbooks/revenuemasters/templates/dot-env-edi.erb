@@ -1,0 +1,104 @@
+##################################################################################################################
+#       RM EDI CONFIGURATION. DO NOT TOUCH ANYTHING HERE UNLESS YOU ARE ABSOLUTELY SURE WHAT YOU ARE DOING       #
+##################################################################################################################
+
+DIRECTORY_SEPARATOR = "/"
+# Where are the EDI input files?
+EDI_DROPOFF_ROOT=/encrypted/rmedi/incoming/[mapped_client_name]/
+# Where should we move the EDI input files after processing them?
+EDI_BACKUP_ROOT=/encrypted/sftp_automated_backup/[mapped_client_name]/incoming/
+# Where should we locally save the generated output files before sending them to the importer
+RM_OUTPUT_ROOT=/encrypted/rmedi/rmedioutputfiles/[mapped_client_name]/
+RM_OUTPUT_ROOT_DEBUG=/encrypted/rmedi/rmedioutputfilesdebug/[mapped_client_name]/
+RM_OUTPUT_LOG=/encrypted/rmedi/rmedilogs/
+RM_MOVE_GENERATED = "claims,remits,ub_cpt"
+RM_SUBFOLDER_CLAIMS = "claims"
+RM_SUBFOLDER_REMITS = "remits"
+RM_SUBFOLDER_UB_CPT = "ub_cpt"
+
+# Server and credentials to use when sending emails
+MAIL_HOST="<%= @email_host %>"
+MAIL_PORT=<%= @email_port %>
+MAIL_AUTH=<%= @email_auth %>
+MAIL_USERNAME=<%= @email_username %>
+MAIL_PASSWORD="<%= @email_password %>"
+# Multiple receivers can be defined with a comma separated list: "john@doe.com,jane@whatever.com,etc@otherdomain.com"
+MAIL_RECEIVER="<%= @edi_app_receivers %>"
+
+# Multiple clients can be defined with a comma separated list: "pssurg,monroesurg,wrmc"
+CLIENTS_TO_PROCESS="<%= @enabled_clients_list %>"
+
+# Default database configuration to use
+DATABASE_DRIVER = "mysql"
+DATABASE_HOST = "<%= @database_hostname %>"
+DATABASE_DATABASE = "<%= @database_database %>"
+DATABASE_USERNAME = "<%= @database_username %>"
+DATABASE_PASSWORD = "<%= @database_password %>"
+DATABASE_CHARSET = "utf8"
+DATABASE_COLLATION = "utf8_unicode_ci"
+DATABASE_PREFIX = ""
+
+# Importer information and credentials to transfer output files
+SFTP_IMPORTER_SERVER = "importer"
+SFTP_IMPORTER_USER = "rmedi"
+SFTP_IMPORTER_PASSWORD = "<%= @sftp_importer_password %>"
+SFTP_IMPORTER_POST = 22
+
+<% @enabled_clients.each do |client_settings| %>
+
+##################################################################################################################
+# <%= client_settings[:site] %>
+##################################################################################################################
+RM_<%= client_settings[:site].upcase %>_MULTIPLE_FACILITIES = "<%= client_settings[:params]['edi_app_multiple_facilities'] %>"
+# Where should we place the output files for this client in the importer?
+RM_<%= client_settings[:site].upcase %>_SUBFOLDER_PROFESSIONAL = "<%= client_settings[:params]['edi_app_subfolder_professional'] %>"
+RM_<%= client_settings[:site].upcase %>_IMPORTER_ROOT = "/from_rmedi/<%= client_settings[:params]['edi_app_importer_id'] %>/[folder_type]/<%= client_settings[:params]['edi_app_facility_code'] %>/"
+# Trigger file that will be created on the importer
+RM_<%= client_settings[:site].upcase %>_IMPORTER_TRIGGER_ROOT = "/from_rmedi/<%= client_settings[:params]['edi_app_importer_id'] %>/trigger/"
+RM_<%= client_settings[:site].upcase %>_IMPORTER_TRIGGER_NAME = "rmedi_trigger.txt"
+# Folders that are used for raw EDI files but this client is providing as flat files, we won't try to produce outputs from them.
+RM_<%= client_settings[:site].upcase %>_SKIP_EDI_PROCESSING = "<%= client_settings[:params]['edi_app_skip_edi_processing'] %>"
+# Folders where client uploads files that should be transfered as-is (payments, adjustments, etc.) Comma delimited list.
+RM_<%= client_settings[:site].upcase %>_MOVE_UNTOUCHED = "<%= client_settings[:params]['edi_app_move_untouched'] %>"
+# INTENTIONALLY WRONG, WE ARE NOT CONNECTING TO CLIENT DATABASE FOR NOW
+DATABASE_<%= client_settings[:site].upcase %>_DRIVER = "mysql"
+DATABASE_<%= client_settings[:site].upcase %>_HOST = "localhost"
+DATABASE_<%= client_settings[:site].upcase %>_DATABASE = "revenuemasters_<%= client_settings[:site] %>"
+DATABASE_<%= client_settings[:site].upcase %>_USERNAME = "rmusername"
+DATABASE_<%= client_settings[:site].upcase %>_PASSWORD = "rmpassword"
+DATABASE_<%= client_settings[:site].upcase %>_CHARSET = "utf8"
+DATABASE_<%= client_settings[:site].upcase %>_COLLATION = "utf8_unicode_ci"
+DATABASE_<%= client_settings[:site].upcase %>_PREFIX = ""
+
+<% if client_settings[:params]['edi_ignore_claims_p'] %>
+IGNORE_<%= client_settings[:site].upcase %>_CLAIMS_P = true
+<% end %>
+<% if client_settings[:params]['edi_ignore_claims_i'] %>
+IGNORE_<%= client_settings[:site].upcase %>_CLAIMS_I = true
+<% end %>
+<% if client_settings[:params]['edi_ignore_remits'] %>
+IGNORE_<%= client_settings[:site].upcase %>_REMITS = true
+<% end %>
+
+<% if client_settings[:params]['edi_app_sftp_server'] %>
+# SFTP server settings
+SFTP_<%= client_settings[:site].upcase %>_SERVER = "<%= client_settings[:params]['edi_app_sftp_server'] %>"
+SFTP_<%= client_settings[:site].upcase %>_USER = "<%= client_settings[:params]['edi_app_sftp_user'] %>"
+SFTP_<%= client_settings[:site].upcase %>_PASSWORD = "<%= client_settings[:params]['edi_app_sftp_password'] %>"
+SFTP_<%= client_settings[:site].upcase %>_POST = <%= client_settings[:params]['edi_app_sftp_port'] %>
+<% if client_settings[:params]['edi_app_sftp_remits_type'] -%>
+SFTP_<%= client_settings[:site].upcase %>_REMITS_TYPE = "<%= client_settings[:params]['edi_app_sftp_remits_type'] %>"
+<% end %>
+# Define only for the file type you want to pull. For pssurg we are only pulling remit files.
+SFTP_<%= client_settings[:site].upcase %>_SUBFOLDER_CLAIMS = "<%= client_settings[:params]['edi_app_sftp_subfolder_claims'] %>"
+SFTP_<%= client_settings[:site].upcase %>_SUBFOLDER_REMITS = "<%= client_settings[:params]['edi_app_sftp_subfolder_remits'] %>"
+SFTP_<%= client_settings[:site].upcase %>_SUBFOLDER_CLAIMS_ARCHIVE = "<%= client_settings[:params]['edi_app_sftp_subfolder_claims_archive'] %>"
+SFTP_<%= client_settings[:site].upcase %>_SUBFOLDER_REMITS_ARCHIVE = "<%= client_settings[:params]['edi_app_sftp_subfolder_remits_archive'] %>"
+<% else %>
+# We don't need to pull anything from their servers
+# SFTP_<%= client_settings[:site].upcase %>_SERVER = ""
+# SFTP_<%= client_settings[:site].upcase %>_USER = ""
+# SFTP_<%= client_settings[:site].upcase %>_PASSWORD = ""
+# SFTP_<%= client_settings[:site].upcase %>_POST = 22
+<% end %>
+<% end %>

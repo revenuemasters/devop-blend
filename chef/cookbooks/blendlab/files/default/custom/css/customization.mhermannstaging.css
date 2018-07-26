@@ -1,0 +1,939 @@
+.name-as-image {
+    margin-top: -10px;
+}
+
+.contentMessage .msg {
+    background-color: #B4B3B1;
+    color: black;
+}
+
+html {
+    background: url(/pics/custom_background_vhc.png);
+    background-color: #FFF;
+}
+
+#body_full {
+    background: url(/pics/custom_background_vhc.png);
+    background-color: #FFF;
+    color: #5D5D5D !important;
+}
+
+.normal_text {
+    color: #666666;
+}
+
+hr.divide {
+    background-color: #cccccc;
+}
+
+#view-content .zend_form #submit-element input {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+a {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+#center_footer {
+    color: #B4B3B1;
+}
+
+#footer_links a {
+    color: #B4B3B1;
+}
+
+#footer_links a:hover {
+    text-decoration: underline;
+}
+
+#navigation {
+    border-bottom: 0px solid #B4B3B1;
+    color: #888888;
+}
+
+#navigation a {
+    color: #B4B3B1;
+}
+
+.paginator a {
+    background: url("/pics/customization/next-btn.png") no-repeat scroll 95% 50% transparent;
+    color: #444443 !important;
+}
+
+.header {
+    background: url("/pics/customization/top_baner.png") repeat-x scroll 0 0 #FFF;
+}
+
+.header a {
+    color: #FFFFFF;
+}
+
+a.login_link {
+    color: #B4B3B1;
+}
+
+.predefined-report-row {
+    border-bottom: 1px solid #E7E7E7;
+    background-color: #FCFCFC;
+}
+
+.predefined-report-row-odd {
+    border-bottom: 1px solid #E7E7E7;
+    background-color: #F6F6F6;
+}
+
+.thin_border {
+    border: 1px solid grey;
+}
+
+.separator {
+    background-color: #e0e0e0;
+}
+
+a.greyOut {
+    color: #808080;
+}
+
+#formFilters .ui-tabs .ui-tabs-panel {
+    background: none repeat scroll 0 0 #F6F6F6;
+}
+
+#formFilters .ui-tabs .ui-tabs-nav li {
+    background-color: #B4B3B1;
+}
+
+#formFilters .ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+    background: url("/pics/customization/activ_tab.png") no-repeat !important;
+}
+
+.ui-dialog .ui-dialog-content {
+    background-color: #FFFFFF !important;
+}
+
+#MiniCalculator {
+    background: none repeat scroll 0 0 #C9C9C9 !important;
+}
+
+.ui-dialog {
+    background-color: black;
+    border: 2px solid #153E7E !important;
+}
+
+#MiniCalculatorTabs {
+    background: none repeat scroll 0 0 #C9C9C9 !important;
+}
+
+#MiniCalculator .ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+    background-color: #FFFFFF;
+}
+
+#AuditManagementContent .ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+    background-color: #CCCCCC;
+}
+
+#AuditManagementContent .ui-tabs-nav li {
+    background-color: #B4B3B1;
+}
+
+.rmwidgetSpan {
+    color: #5D5D5D;
+    border: 2px solid #CCCCCC;
+}
+
+a.add_criteria_row {
+    background-color: #B4B3B1;
+    color: #FFFFFF !important;
+}
+
+.board #accountContainer .smallFloater h1 a {
+    color: #FFFFFF;
+}
+
+.board #accountContainer .smallFloater_right h1 a {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.board #accountContainer .bigFloater .board_title {
+    background: #CC3423;
+}
+
+.board #accountContainer .bigFloater h1 a {
+    color: #FFFFFF;
+}
+
+.board #accountContainer .transactionFloater h1 a {
+    color: #FFFFFF;
+}
+
+.board #accountContainer .clasificationFieldset h1 {
+    color: #FFFFFF;
+}
+
+.board #accountContainer .transactionFloater table {
+    background-color: #EBEBEB;
+}
+
+.board #accountContainer .bigNotesContainer #addNoteContainer {
+    border-bottom: 2px solid #dddddd;
+    border-top: 1px solid #DDDDDD;
+    border-left: 2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+}
+
+.board #accountContainer .bigNotesContainer #addNoteContainer .addNoteBox {
+    border: 1px solid #CCCCCC;
+}
+
+#TransactionData table {
+    border: 1px solid #000000;
+}
+
+#TransactionData table th, #TransactionData table td {
+    border: 1px solid #000000;
+}
+
+#ItemizedBill table {
+    border: 1px solid #000000;
+}
+
+#ItemizedBill table th, #TransactionData table td {
+    border: 1px solid #000000;
+}
+
+#ItemizedBill .itemizedBillTable td {
+    border-right: 1px solid #000000;
+}
+
+input.errorSave {
+    background: url("/pics/customization/ui-bg_inset-soft_45_0078ae_1x100.png") repeat scroll 50% 50% transparent;
+    color: #ffffff;
+}
+
+#MiniCalculator .totals td.subtotalLine {
+    border-bottom: 1px solid #000000;
+}
+
+#MiniCalculator .ui-tabs .ui-tabs-panel {
+    background: url("/pics/customization/MiniCalculatorTabs_04.png") repeat-y scroll left top transparent;
+}
+
+#AuditManagementContent .totals td.subtotalLine {
+    border-bottom: 1px solid #000000;
+}
+
+.ui-dialog .ui-dialog-title {
+    color: #FFFFFF;
+}
+
+/*panels*/
+.panel_left {
+    color: #595960;
+}
+
+.panel_right {
+    color: #595960;
+}
+
+#needs-management {
+    background-color: #f6f6f6;
+}
+
+#needs-management td i {
+    color: #D5D4D4;
+}
+
+.Percents_mid table {
+    border-top: 1px solid #CCCCCC;
+}
+
+.Need_table_top {
+    background: url("/pics/customization/notesTopBand_mid.png") repeat-x scroll 0 0;
+    background-color: #CC3423;
+}
+
+.Need_table_top_mid {
+    background: url("/pics/customization/notesTopBand_mid.png") repeat-x scroll 0 0;
+    background-color: #CC3423;
+}
+
+.Need_table_top_r {
+    background: url("/pics/customization/notesTopBand_mid.png") repeat-x scroll 0 0;
+    background-color: #CC3423;
+}
+
+#needs-management .no-border {
+    color: #FFFFFF;
+}
+
+#Btn_ {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.Btn_blue {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.btn-predefined-report {
+    background: url("/pics/customization/predefined-button.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.ui-button-text-only{background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    color: #3c3c3c !important;
+    font-size: 14px !important;
+    height: 31px !important;
+    margin-right: 15px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    width: 195px !important;
+
+}
+
+.saveButtonClass {
+    color: #3c3c3c !important;
+}
+
+.cancelButtonClass {
+    color: #3c3c3c !important;
+}
+
+.Btn_blue_big_center {
+    background: url("/pics/customization/blue_big_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.Btn_blue_no {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.big_btn {
+    background: url("/pics/customization/big_btn.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.Btn_blue_big {
+    background: url("/pics/customization/blue_big_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.Btn_blue_small {
+    background: url("/pics/customization/blue_b_small.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.Btn_blue_small_inline {
+    background: url("/pics/customization/blue_b_small.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+#addNoteBtn {
+    background: url("/pics/customization/blue_b_small.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+#runReport, #restoreBackup {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c;
+}
+
+button[disabled] {
+    color: #CCC !important;
+}
+
+input[type=submit][disabled] {
+    color: #CCC !important;
+}
+
+input[type=button][disabled] {
+    color: #CCC !important;
+}
+
+#addUser {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3C3C3C;
+}
+
+#popupChartBtn {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3C3C3C;
+}
+
+.buttonE, .buttonD {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3C3C3C;
+}
+
+.button {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #3C3C3C;
+}
+
+.filters_top {
+    background: url("/pics/customization/filters_01.png") no-repeat scroll 0 0 transparent;
+}
+
+.filters_bot {
+    background: url("/pics/customization/filters_03.png") no-repeat scroll 0 0 transparent;
+}
+
+.filters_mid {
+    background: url("/pics/customization/filters_02.png") repeat-y scroll 0 0 transparent;
+}
+
+.filters_min_top {
+    background: url("/pics/customization/filters_act_mng_01.png") no-repeat scroll 0 0 transparent;
+}
+
+.filters_min_bot {
+    background: url("/pics/customization/filters_act_mng_03.png") no-repeat scroll 0 0 transparent;
+}
+
+.filters_min_mid {
+    background: url("/pics/customization/filters_act_mng_02.png") repeat-y scroll 0 0 transparent;
+}
+
+#PatientGrouperBtn {
+    background: url("/pics/customization/blue_b.png") no-repeat;
+    color: #444443;
+}
+
+#ItemizedBillBtn {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #444443;
+}
+
+#ClinicalDataBtn {
+    background: url("/pics/customization/blue_b.png") no-repeat scroll 0 0 transparent;
+    color: #444443;
+}
+
+#NeedsManagementBtn {
+    background: url("/pics/customization/blue_b.png") repeat scroll 0 0 transparent;
+    color: #444443;
+}
+
+#MiniCalculatorBtn {
+    background: url("/pics/customization/blue_b.png");
+    color: #444443;
+}
+
+#AppealLetterBtn {
+    background: url("/pics/customization/blue_b.png");
+    color: #444443;
+}
+
+#BulkAppealContent {
+    background-color: #F6F6F6;
+}
+
+#AuditManagementContent {
+    background-color: #F6F6F6;
+}
+
+#view-content {
+    background-color: #f6f6f6;
+}
+
+select {
+    border: 1px solid #CCCCCC;
+}
+
+input {
+    border: 1px solid #CCCCCC;
+}
+
+.input_large {
+    border: 1px solid #CCCCCC;
+}
+
+td.transaction-border {
+    border-top: 1px solid #DDDDDD;
+}
+
+.dash_menu_mid span a {
+    color: #595960;
+}
+
+.dash_menu_item {
+    border-bottom: 1px solid #d7d7d7;
+}
+
+#spamCaptcherAll div#spamCaptcherDiv #spamCaptcherUserValidationTrigger {
+    background-color: #00AEEF !important;
+}
+
+#spamCaptcherAll div#spamCaptcherDiv #spamCaptcherUserValidationTrigger:hover {
+    color: #000000 !important;
+}
+
+#NeedsManagement table {
+    background-color: #FFFFFF;
+}
+
+#NeedsManagement table td {
+    border: 1px solid #CCCCCC;
+}
+
+#needs-management .full table tr {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.black {
+    background: none repeat scroll 0 0 #F6F6F6 !important;
+}
+
+#BulkAppealContent span {
+    color: #5d5d5d;
+}
+
+#BulkAppealContent .number_span {
+    color: #c6c6c6;
+}
+
+.dashboard-account-details legend {
+    color: #5d5d5d;
+}
+
+.blue_bar {
+    background: url("/pics/customization/blue_bar.png") no-repeat scroll 0 0 transparent;
+    background-color: #CC3423;
+}
+
+.td_l_t {
+    background: url("/pics/customization/td_l_t.png") repeat-y;
+}
+
+.td_r_t {
+    background: url("/pics/customization/td_l_t.png") top right repeat-y;
+}
+
+.td_l {
+    background: url("/pics/customization/td_l_t.png") repeat-y scroll left top transparent;
+}
+
+.td_r {
+    background: url("/pics/customization/td_l_t.png") top right repeat-y;
+}
+
+.td_r_b {
+    background: url("/pics/customization/td_l_b.png") top right no-repeat;
+}
+
+.td_l_b {
+    background: url("/pics/customization/td_l_b.png") no-repeat;
+}
+
+.n_td_t {
+    background: url("/pics/customization/n_td_t.png") no-repeat;
+}
+
+.n_td {
+    background: url("/pics/customization/n_td.png") no-repeat;
+}
+
+.n_td_b {
+    background: url("/pics/customization/n_td.png") scroll 0% 100% no-repeat;
+}
+
+.n_td_l {
+    background: url("/pics/customization/n_td.png") repeat-y;
+}
+
+.n_td_r {
+    background: url("/pics/customization/n_td.png") repeat-y scroll right top transparent;
+}
+
+.c_td_t {
+    background: url("/pics/customization/c_td_t.png") no-repeat;
+}
+
+.c_td_b {
+    background: url("/pics/customization/c_td_b.png") no-repeat;
+}
+
+.AuditBox {
+    border-bottom: 2px solid #DDDDDD;
+}
+
+#report table tr th {
+    background: none repeat scroll 0 0 #CCCCCC;
+}
+
+.bigFloater_l {
+    background: url("/pics/customization/bigFloater_l.png") no-repeat; /*height: 65px;*/
+}
+
+.bigFloater_mid {
+    background-color: #FFFFFF;
+}
+
+.bigFloater_r {
+    background: url("/pics/customization/bigFloater_r.png") right top no-repeat; /*height: 65px;*/
+}
+
+.bigFloater_l_b {
+    background: url("/pics/customization/bigFloater_l_b.png") no-repeat scroll 0 110% transparent; /*height: 80px;*/
+}
+
+.bigFloater_mid_b {
+    background: url("/pics/customization/bigFloater_mid_b.png") no-repeat scroll 0 110% transparent; /*height: 80px;*/
+}
+
+.bigFloater_r_b {
+    background: url("/pics/customization/bigFloater_r_b.png") no-repeat scroll 11px 110% transparent; /*height: 80px;*/
+}
+
+#rulesTable {t
+    border: 1px solid #000000;
+}
+
+#rulesTable td {
+    border: 1px solid #000000;
+}
+
+.t220_td_t {
+    background: url("/pics/customization/t220_td_t.png") no-repeat scroll 0 0 transparent;
+}
+
+.t220_td {
+    background: url("/pics/customization/t220_td.png") no-repeat scroll 0 0 transparent;
+}
+
+.t220_td_b {
+    background: url("/pics/customization/t220_td_b.png") no-repeat scroll 0 0 transparent;
+}
+
+.login_t {
+    background: url("/pics/customization/login_t.png") no-repeat scroll 0 0 transparent;
+}
+
+.login_m {
+    background: url("/pics/customization/login_m.png") repeat-y scroll 0 0 transparent;
+}
+
+.login_b {
+    background: url("/pics/customization/login_b.png") no-repeat scroll 0 0 transparent;
+}
+
+.big_criteria {
+    color: #5d5d5d;
+}
+
+.popupDialog .border_gray {
+    border-right: 2px solid #C0C0C0;
+}
+
+.info_top {
+    background: url("/pics/customization/queueInfo_top.png") no-repeat scroll 0 0 transparent;
+}
+
+.info_mid {
+    background: url("/pics/customization/queueInfo_mid.png") repeat-y scroll 0 0 transparent;
+}
+
+.info_bot {
+    background: url("/pics/customization/queueInfo_bot.png") no-repeat scroll 0 0 transparent;
+}
+
+.board_title {
+    background: #CC3423;
+}
+
+.bulkAppealBox .add_criteria_row {
+    background-color: #B4B3B1 !important;
+}
+
+.board #accountContainer .smallFloater_right .board_title {
+    background: #CC3423;
+}
+
+.board .transactionFloater .board_title {
+    background: #CC3423;
+}
+
+.board #accountContainer fieldset.clasificationFieldset .board_title {
+    background: #CC3423;
+}
+
+.mceLast {
+    border-bottom: 1px solid #BBBBBB !important;
+}
+
+.perDiem {
+    background-color: #FFFFFF !important;
+}
+
+#auditForm .AuditBox #AccountAudit {
+    background: url("/pics/customization/blue_big_266.png") no-repeat scroll 0 0 transparent !important;
+}
+
+.even-number {
+    color: #b33434 !important;
+}
+
+.cm_innerbox {
+    border-top: 1px solid #000000;
+}
+
+.cm_innerbox {
+    border-top: 1px solid #000000;
+}
+
+a.tooltip {
+    border-bottom: dotted 1px blue;
+}
+
+a.tooltip > span {
+    -webkit-box-shadow: 2px 2px 2px #999;
+    -moz-box-shadow: 2px 2px 2px #999;
+    box-shadow: 2px 2px 2px #999;
+}
+
+a.tooltip span b {
+    -webkit-box-shadow: inset -1px 1px 0 #fff;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    -o-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+}
+
+a.tooltip > span {
+    color: #FFFFFF;
+    background: #0078AE;
+    background: -moz-linear-gradient(top, #0078AE 0%, #009999 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0078AE), color-stop(100%, #009999));
+    border: 1px solid #0066CC;
+}
+
+a.tooltip span b {
+    background: #0078AE;
+    border-top: 1px solid #0066CC;
+    border-right: 1px solid #0066CC;
+}
+
+/* Tooltip IE8 */
+.tooltip-img {
+    background-image: url(/pics/customization/ie-tooltip.png);
+}
+/* End tooltip IE 8*/
+
+#popup-last-tab {
+    background-image: url('/pics/customization/blue-loader-dot.png');
+}
+
+#last-box-popup {
+    background-color: #FFF;
+}
+
+.last-tab-btn {
+    -moz-box-shadow: inset 0px -1px 1px 0px #bee2f9;
+    -webkit-box-shadow: inset 0px -1px 1px 0px #bee2f9;
+    box-shadow: inset 0px -1px 1px 0px #bee2f9;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #63b8ee), color-stop(1, #468ccf));
+    background: -moz-linear-gradient(center top, #63b8ee 5%, #468ccf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#63b8ee', endColorstr='#468ccf');
+    background-color: #63b8ee;
+    border: 1px solid #3866a3;
+    color: #ffffff;
+    text-shadow: 1px -2px 1px #7cacde;
+}
+
+.last-tab-btn:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #468ccf), color-stop(1, #63b8ee));
+    background: -moz-linear-gradient(center top, #468ccf 5%, #63b8ee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee');
+    background-color: #468ccf;
+}
+
+.simulation-response {
+    color: green;
+    border: 2px solid #C4B8AF;
+}
+
+.simulation-response-err {
+    color: red;
+    border: 2px solid red;
+}
+
+.simulation-text {
+    color: #42C956;
+}
+
+.tooltip-simulation:hover:after {
+    background: rgba(0, 0, 0, .7);
+    color: #fff;
+}
+
+.middle-filters {
+    background: url("/pics/customization/filters_02.png") repeat-y scroll 0 0 transparent;
+}
+
+.middle-filters {
+    background: url("/pics/customization/filters_02.png") repeat-y scroll 0 0 transparent;
+}
+
+.cm-small-btn {
+    background: url("/pics/customization/cm-small-btn.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.cm-small-upload-btn {
+    background: url("/pics/customization/cm-small-upload-btn.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.cm-filters_bot {
+    background: url("/pics/customization/filters_03.png") no-repeat scroll 0 0 transparent;
+}
+
+.cm-filters_mid {
+    background: url("/pics/customization/filters_02.png") repeat-y scroll 0 0 transparent;
+}
+
+.cm-filters_mid_inpatient {
+    background: url("/pics/customization/filters_02.png") repeat-y scroll 0 0 transparent;
+}
+
+.cm-filters_top {
+    background: url("/pics/customization/filters_01.png") no-repeat scroll 0 0 transparent;
+}
+
+.cm-exception-box-top {
+    background: url("/pics/customization/cm-exception-box-top.png") no-repeat;
+}
+
+.cm-exception-box-bot {
+    background: url("/pics/customization/cm-exception-box-bot.png") no-repeat;
+}
+
+.cm-exception-box-mid {
+    background: url("/pics/customization/cm-exception-box-mid.png") repeat-y scroll 0 0 transparent;
+}
+
+.close-icon {
+    background: url("/pics/customization/close-icon.png") no-repeat;
+}
+
+.close-icon:hover {
+    background: url("/pics/customization/close-icon-hover.png") no-repeat;
+}
+
+.cm-title-index-top {
+    background: url("/pics/customization/t220_td_t.png") no-repeat scroll 0 0 transparent;
+}
+
+.cm-title-index-mid {
+    background: url("/pics/customization/t220_td.png") repeat-y scroll 0 0 transparent;
+}
+
+.cm-title-index-bot {
+    background: url("/pics/customization/t220_td_b.png") no-repeat scroll 0 0 transparent;
+}
+
+.checked {
+    background: url("/pics/customization/cm-small-btn-active.png") no-repeat scroll 0 0 transparent;
+}
+
+.cm-exception-box-drg-top {
+    background: url("/pics/customization/cm-exception-box-top.png") no-repeat;
+}
+
+.cm-exception-box-drg-bot {
+    background: url("/pics/customization/cm-exception-box-bot.png") no-repeat;
+}
+
+.cm-exception-box-drg-mid {
+    background: url("/pics/customization/cm-exception-box-mid.png") repeat-y scroll 0 0 transparent;
+}
+
+.cm-table-line-pp:hover {
+    background-color: #F6F6F6;
+}
+
+.cm-table-line {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.cm-table-line:hover {
+    background-color: #F6F6F6;
+}
+
+.selectedCM {
+    background-color: #DBDBDB;
+}
+
+.case-rates-box-drg-top {
+    background: url("/pics/customization/cm-exception-box-top.png") no-repeat;
+}
+
+.case-rates-box-drg-bot {
+    background: url("/pics/customization/cm-exception-box-bot.png") no-repeat;
+}
+
+.case-rates-box-drg-mid {
+    background: url("/pics/customization/cm-exception-box-mid.png") repeat-y scroll 0 0 transparent;
+}
+
+.add-contract-name-btn {
+    background: url("/pics/customization/cm-small-upload-btn.png") no-repeat scroll 0 0 transparent;
+    color: #3c3c3c !important;
+}
+
+.progress-popup {
+    background-color: #E2E2E2;
+    border: 3px solid #FFFFFF;
+}
+
+.visited-mail {
+    color: #0078ae !important;
+}
+
+div.tooltip-editCM {
+    border-bottom: dotted 1px blue;
+}
+
+div.tooltip-editCM > span {
+    -webkit-box-shadow: 2px 2px 2px #999;
+    -moz-box-shadow: 2px 2px 2px #999;
+    box-shadow: 2px 2px 2px #999;
+}
+
+div.tooltip-editCM > span {
+    color: #FFFFFF;
+    background: #0078AE;
+    background: -moz-linear-gradient(top, #0078AE 0%, #009999 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0078AE), color-stop(100%, #009999));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078AE', endColorstr='#009999', GradientType=0);
+    border: 1px solid #0066CC;
+}
+
+
+/*
+*******************************************************
+*** Properties originally defined on files located ****
+*** outside the css folder                         ****
+*******************************************************
+*/
+.ui-widget-content .ui-icon {
+    background-image: url(/pics/customization/ui-icons_0078ae_256x240.png);
+}
+
+.ui-widget-header {
+    border: 1px solid #a6c9e2;
+    background: #CC3423;
+    color: #ffffff;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #CC3423;
+    color: #ffffff;
+}

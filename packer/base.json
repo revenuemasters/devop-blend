@@ -1,0 +1,52 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_KEY`}}",
+    "secrets_bucket": "{{env `SECRETS_BUCKET`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-5c207736",
+      "instance_type": "m3.xlarge",
+      "ssh_username": "ubuntu",
+      "ami_name": "rm-base-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "{{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "type": "shell",
+      "inline": [
+        "apt-get update",
+        "apt-get -y upgrade",
+        "apt-get install -f",
+        "rm -rf /var/lib/apt/lists/*",
+        "apt-get update",
+        "mkdir -p -m 0755 /etc/chef/ohai/hints",
+        "touch /etc/chef/ohai/hints/ec2.json",
+        "chmod 0644 /etc/chef/ohai/hints/ec2.json",
+        "touch /etc/chef/ohai/hints/iam.json",
+        "chmod 0644 /etc/chef/ohai/hints/iam.json"
+      ]
+    },
+    {
+      "type": "chef-solo",
+      "cookbook_paths": ["../chef/berks-cookbooks"],
+      "json": {
+        "citadel": {
+          "access_key_id": "{{user `aws_access_key`}}",
+          "secret_access_key": "{{user `aws_secret_key`}}"
+        },
+        "cfn": {
+          "properties": {
+            "secrets_bucket": "{{user `secrets_bucket`}}"
+          }
+        }
+      },
+      "run_list": ["recipe[blendlab::default]"],
+      "install_command": "curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -v 12.5.1"
+    }
+  ]
+}

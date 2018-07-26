@@ -1,0 +1,14 @@
+APP_PATH=/var/www/edi_monitor_<%= @site %>/current
+INCOMING_PATH=/encrypted/sftp/<%= @site %>/incoming
+SOURCE_PATH=/encrypted/sftp_automated_backup/<%= @site %>/incoming
+
+MAIL_HOST="<%= @email_host %>"
+MAIL_PORT=<%= @email_port %>
+MAIL_AUTH=<%= @email_auth %>
+MAIL_USERNAME=<%= @email_username %>
+MAIL_PASSWORD=<%= @email_password %>
+MAIL_RECEIVER="<%= @edi_monitor_receivers %>"
+
+FACILITY_NAME="<%= @edi_monitor_facility_name %>"
+FACILITY_ID="<%= @edi_monitor_facility_id %>"
+FLAT_FILE_HEADERS="<%= @edi_monitor_flat_file_headers %>"

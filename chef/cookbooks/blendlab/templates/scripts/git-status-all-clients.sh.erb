@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+<% @sites.each do |site| %>
+
+printf "\nChecking <%= site %> \n"
+cd /var/www/<%= site %>/current/
+git status
+  
+<% end %>

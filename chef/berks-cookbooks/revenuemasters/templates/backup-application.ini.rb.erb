@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'aws-sdk'
+require 'date'
+require 'find'
+
+s3 = Aws::S3::Client.new(region: '<%= @region %>')
+
+Dir.chdir('/var/www')
+Find.find('.') do |path|
+  if path.end_with?('shared/application.ini')
+    parts = path.gsub('./', '').split('/')
+    key = "#{Date.today}/<%= @role %>/#{parts.first}-#{parts.last}"
+    backup_path = "#{path}.#{Date.today}.bak"
+    puts "backing up #{path} to disk: #{backup_path}..."
+    FileUtils.copy(path, backup_path)
+    puts "backing up #{path} to s3://<%= @co_name %>-<%= @env_name %>-backups/#{key}..."
+    File.open(path, 'rb') do |file|
+      s3.put_object(bucket: '<%= @co_name %>-<%= @env_name %>-backups', key: key, body: file, server_side_encryption: 'AES256')
+    end
+  end
+end

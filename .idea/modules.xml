@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/alternatives.iml" filepath="$PROJECT_DIR$/.idea/modules/alternatives.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/apt.iml" filepath="$PROJECT_DIR$/.idea/modules/apt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chef_cfn.iml" filepath="$PROJECT_DIR$/.idea/modules/chef_cfn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/devop-blend.iml" filepath="$PROJECT_DIR$/devop-blend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hostsfile.iml" filepath="$PROJECT_DIR$/.idea/modules/hostsfile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logrotate.iml" filepath="$PROJECT_DIR$/.idea/modules/logrotate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/python.iml" filepath="$PROJECT_DIR$/.idea/modules/python.iml" />
+    </modules>
+  </component>
+</project>

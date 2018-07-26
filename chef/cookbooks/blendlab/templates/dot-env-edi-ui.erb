@@ -1,0 +1,27 @@
+APP_ENV=local
+APP_DEBUG=false
+APP_KEY=base64:iM1gOgvSXLQvhGdh9fD7MTenHSeJ9LQMyjg6xH+ub60=
+APP_URL=https://<%= @hostname %>
+
+DB_CONNECTION=mysql
+DB_HOST=<%= @database_hostname %>
+DB_PORT=3306
+DB_DATABASE=<%= @database_database %>
+DB_USERNAME=<%= @database_username %>
+DB_PASSWORD=<%= @database_password %>
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=smtp
+MAIL_HOST="<%= @email_host %>"
+MAIL_PORT=<%= @email_port %>
+MAIL_AUTH=<%= @email_auth %>
+MAIL_USERNAME=<%= @email_username %>
+MAIL_PASSWORD=<%= @email_password %>
+MAIL_ENCRYPTION=tls

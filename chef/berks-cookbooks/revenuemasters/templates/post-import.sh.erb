@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+WRITEDOWN_FILE=/encrypted/client_data/<%= @site %>/outgoing/`date <%= @report_date_format %>`_write_down_report.txt
+REVERSAL_FILE=/encrypted/client_data/<%= @site %>/outgoing/`date <%= @report_date_format %>`_reversal_report.txt
+NON_ADJUSTMENT_FILE=/encrypted/client_data/<%= @site %>/outgoing/`date <%= @report_date_format %>`_non_adjustment_report.txt
+NOTES_REPORT_FILE=/encrypted/client_data/<%= @site %>/outgoing/`date --date="1 day ago" <%= @notes_report_date_format %>`<%= @filename %>
+
+cd /var/www/
+./run_<%= @site %>.sh <%= @site %>/current/application/cmd/exportWriteDown.php > /encrypted/client_data/<%= @site %>/applogs/`date +%m%d%Y%H%M%S`-writedown-report-generation.txt
+
+export SSHPASS="<%= @sftp_password %>"
+
+FILE_NAMES=`find /encrypted/client_data/<%= @site %>/outgoing/ -mmin -720 -type f`
+sftp_statements=""
+for i in $FILE_NAMES
+do
+  sftp_statements=$"${sftp_statements}"$'\n'$"put ${i}"
+done
+sftp_statements=$'cd /outgoing/ar-write-down-and-reversal'$sftp_statements$'\ncd /outgoing/<%= @site %>-daily'$sftp_statements$'\nbye\n'
+
+sshpass -e sftp -oBatchMode=no -b - <%= @site %>@<%= @hostname %> << !
+$sftp_statements
+!
+
+./run_<%= @site %>.sh <%= @site %>/current/application/cmd/exportNotes.php /encrypted/client_data/<%= @site %>/outgoing/
+if [ -e "$NOTES_REPORT_FILE" ]
+then
+  sshpass -e sftp -oBatchMode=no -b - <%= @site %>@<%= @hostname %> << !
+     cd /outgoing/ar-write-down-and-reversal
+     put $NOTES_REPORT_FILE
+     cd /outgoing/<%= @site %>-daily
+     put $NOTES_REPORT_FILE
+     bye
+!
+fi

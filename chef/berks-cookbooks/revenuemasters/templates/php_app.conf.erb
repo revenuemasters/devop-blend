@@ -1,0 +1,50 @@
+<VirtualHost *:80>
+    RewriteEngine On
+    RewriteOptions Inherit
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+    ServerName <%= @params[:server_name] %>
+    <% if @params[:ssl_host] -%>
+    ServerAlias <%= @params[:ssl_host] %>
+    <% end -%>
+</VirtualHost>
+
+<VirtualHost *:443>
+    RewriteEngine On
+    RewriteOptions Inherit
+    <Directory <%= @params[:docroot] %>>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        <% if node['apache']['version'] == '2.4' -%>
+        Require all granted
+        <% else -%>
+        Order allow,deny
+        Allow from all
+        <% end -%>
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/<%= @params[:server_name] %>-error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/<%= @params[:server_name] %>-access.log combined
+
+    DocumentRoot <%= @params[:docroot] %>
+
+    # Revenue Masters SSL Certificate Configuration
+    SSLEngine on
+    SSLProtocol -all +TLSv1.2
+    SSLCipherSuite ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+    SSLHonorCipherOrder on
+    SSLCertificateFile <%= @params[:ssl_cert_file] %>
+    SSLCertificateKeyFile <%= @params[:ssl_cert_key_file] %>
+    SSLCertificateChainFile <%= @params[:ssl_cert_chain_file] %>
+
+    AddType application/x-httpd-php .php
+    AddType application/x-httpd-php phtml pht php
+    ServerName <%= @params[:server_name] %>
+    php_value max_input_vars 3000
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet

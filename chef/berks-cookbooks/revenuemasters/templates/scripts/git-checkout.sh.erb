@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+COMMIT=$1
+
+if [ "${COMMIT} == "" ]; then
+    echo "You must supply a commit sha"
+else
+<% @sites.each do |site| %>
+
+    printf "\nChecking out ${COMMIT} on <%= site %> \n"
+    cd /var/www/<%= site %>/current
+    git checkout ${COMMIT}
+
+<% end %>
+fi

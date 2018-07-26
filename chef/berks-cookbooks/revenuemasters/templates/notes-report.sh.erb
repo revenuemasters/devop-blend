@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+NOTES_REPORT_FILE=/encrypted/client_data/<%= @site %>/outgoing/`date --date="1 day ago" +%m%d%Y`<%= @filename %>
+
+cd /var/www/
+
+export SSHPASS="<%= @plaintext_password %>"
+
+./run_<%= @site %>.sh <%= @site %>/current/application/cmd/exportNotes.php /encrypted/client_data/<%= @site %>/outgoing/
+
+if [ -e "$NOTES_REPORT_FILE" ]
+then
+  sshpass -e sftp -oBatchMode=no -b - <%= @site %>@<%= node['cfn']['properties']['sftp_dns'] %> << !
+     cd /outgoing/notes
+     put $NOTES_REPORT_FILE
+     bye
+!
+fi

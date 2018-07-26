@@ -1,0 +1,53 @@
+{
+  "name": "aws-cloudwatchlogs",
+  "description": "Install and Configure AWS CloudWatch Logs Agent",
+  "long_description": "# AWS CloudWatch Logs Cookbook\n[![Runtime][runtime-badge]][chef-cloudwatchlogs-runtime-url]\n[![License][license-badge]][chef-cloudwatchlogs-license-url]\n\nUnofficial Chef Cookbook that install and configure [AWS CloudWatch Logs][aws-cloudwatch-url]\nAgent and deploy it's configurations automatically.\n\n## Usage\n\nAdd this cookbook to your base recipe:\n\n```ruby\ncookbook 'aws-cloudwatchlogs', '~> 1.1.7'\n```\n\nYou need to configure the following node attributes via an `environment` or `role`:\n\n```ruby\ndefault_attributes(\n   'aws_cwlogs' => {\n      'region' => 'your_aws_region',\n      'aws_access_key_id' => 'your_aws_access_key',\n      'aws_secret_access_key' => 'your_aws_secret_key',\n      'log' => {\n         'syslog' => {\n            'datetime_format' => '%b %d %H:%M:%S',\n            'file' => '/var/log/syslog',\n            'buffer_duration' => '5000',\n            'log_stream_name' => '{instance_id}',\n            'initial_position' => 'start_of_file',\n            'log_group_name' => '/var/log/syslog'\n         }\n      }\n   }\n)\n```\n\nOr you can also configure by declaring it in another cookbook at a higher precedence level:\n\n```ruby\ndefault['aws_cwlogs']['region'] = 'your_aws_region'\ndefault['aws_cwlogs']['aws_access_key_id'] = 'your_aws_access_key'\ndefault['aws_cwlogs']['aws_secret_access_key'] = 'your_aws_secret_key'\ndefault['aws_cwlogs']['log']['syslog'] = {\n   'datetime_format' => '%b %d %H:%M:%S',\n   'file' => '/var/log/syslog',\n   'buffer_duration' => '5000',\n   'log_stream_name' => '{instance_id}',\n   'initial_position' => 'start_of_file',\n   'log_group_name' => '/var/log/syslog'\n}\n```\n**Note**: If you do not specify aws credentials, it will attempt to use the AWS IAM Role assigned to the instance instead.\n\nOnce you defined the attributes, you will need to reference `aws_cwlogs` resource in your recipe:\n\n```ruby\ninclude_recipe 'aws-cloudwatchlogs'\n\naws_cwlogs 'syslog' do\n  log node['aws_cwlogs']['log']['syslog']\nend\n\naws_cwlogs 'messages' do\n  log node['aws_cwlogs']['log']['messages']\nend\n```\n\nThis will create a unique configuration file in AWS CloudWatch Logs that will be stored in `etc/config` directory.\n\n**Remember**: You can configure as many logs as you need with `log` attribute.\n\n**Note**: We are not making use of `data_bags` for AWS Credentials in this recipe at this time.\n\n## Example\n\nThose attributes used before will generate the AWS CloudWatch Logs configuration below:\n\n```ini\n[syslog]\ndatetime_format = %b %d %H:%M:%S\nfile = /var/log/syslog\nbuffer_duration = 5000\nlog_stream_name = {instance_id}\ninitial_position = start_of_file\nlog_group_name = /var/log/syslog\n```\n\nFor more deployment details about AWS CloudWatch Logs, please visit the [AWS CloudWatch Logs Documentation](https://aws.amazon.com/documentation/cloudwatch).\n\n## Requirements\n\n### Platform\n\n* Ubuntu 14.04\n\n## Attributes\n\nSee `attributes/default.rb` for default values.\n\n## Recipes\n\n### default\n\nThis recipe will check if all necessary requirements being met, and after\nthat will call `configure` and `install` recipe.\n\n### configure\n\nThis recipe will prepare and configure all files required by AWS CloudWatch Logs.\n\n### install\n\nThis recipe will install AWS CloudWatch Logs Agent.\n\n## Changes\n\nSee `CHANGELOG.md` for more details.\n\n## License and Author\n\nSee `LICENSE` for more details.\n\n## Trademark\n\nAmazon Web Services and AWS are trademarks of Amazon.com, Inc. or\nits affiliates in the United States and/or other countries.\n\n   [aws-cloudwatch-url]: https://aws.amazon.com/cloudwatch/\n   [chef-cloudwatchlogs-license-url]: https://github.com/amalucelli/chef-cloudwatchlogs/blob/markdown/LICENSE\n   [chef-cloudwatchlogs-runtime-url]: https://github.com/amalucelli/chef-cloudwatchlogs\n   [license-badge]: https://img.shields.io/badge/license-apache-757575.svg?style=flat-square\n   [runtime-badge]: https://img.shields.io/badge/runtime-ruby-orange.svg?style=flat-square\n",
+  "maintainer": "Alexandre Guimarães Malucelli",
+  "maintainer_email": "alexandre@malucelli.net",
+  "license": "Apache-2.0",
+  "platforms": {
+    "ubuntu": ">= 0.0.0"
+  },
+  "dependencies": {
+
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "1.1.7",
+  "source_url": "https://github.com/amalucelli/chef-cloudwatchlogs",
+  "issues_url": "https://github.com/amalucelli/chef-cloudwatchlogs/issues",
+  "privacy": false,
+  "chef_versions": [
+    [
+      ">= 12.1"
+    ]
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+<% @sites.each do |site| %>
+
+printf "\nPulling <%= site %>\n"
+cd /var/www/<%= site %>/current/
+git checkout .
+git checkout stable-master
+git pull origin stable-master
+  
+<% end %>

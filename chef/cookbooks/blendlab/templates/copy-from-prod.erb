@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+display_usage() {
+  echo "Usage: copy-from-prod path/in/prod/s3/file.txt localpath/file.txt"
+}
+
+if [ $# -le 1 ]
+then
+  display_usage
+  exit 1
+fi
+
+AWS_REGION=<%= @region %> AWS_ROLE_ARN=<%= @role_arn %> awssume aws s3 cp s3://<%= @s3_bucket %>/$1 $2

@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: chef/
+    destination: /etc/chef/codedeploy
+hooks:
+  ApplicationStart:
+    - location: scripts/run-chef.sh
+      runas: root

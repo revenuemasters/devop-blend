@@ -1814,7 +1814,7 @@ CloudFormation do
           'RevisionType' => 'GitHub',
           'GitHubLocation' => {
             'CommitId' => Ref(:ChefSha),
-            'Repository' => "#{repo_org}/devops-blend"
+            'Repository' => "#{repo_org}/devop-blend"
           }
         }
       }

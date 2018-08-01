@@ -8,6 +8,7 @@ defaults: &defaults
   availability-zones: b,c,d
   co-name: blendlab
   repo_org: revenuemasters
+  repo-org: revenuemasters
   cvc-sha: 1eb0a57f63db19da0f798a478f25ed24a06e1ac5 # master
   dedicated-tenancy: false
   default-availability-zone: b
@@ -41,7 +42,7 @@ devdefaults: &proddefaults
   app-instance-type: m4.large
   app-volume-size: 50
   availability-zones: a,b,c
-  chef-sha: d91c786bdbdf6a3af8246d79195df9bdc6ddf3bf # master
+  chef-sha: e23dcce720a4ebedeafb4f8230b04b53b46c155e # master
   # Tenancy was changed to 'default' via CLI: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html#change-tenancy-vpc
   # CF will try to delete resources if this option is changed (there is a Stack Policy in place to protect against that).
   dedicated-tenancy: true
@@ -63,7 +64,7 @@ devdefaults: &proddefaults
 stagedefaults: &stagedefaults
   <<: *defaults
   app-instance-type: m4.large
-  chef-sha: d91c786bdbdf6a3af8246d79195df9bdc6ddf3bf # master
+  chef-sha: e23dcce720a4ebedeafb4f8230b04b53b46c155e # master
   hosted-zone-name: 'blendcopy.revenuemasters.com.'
   importer-instance-type: m4.large
   key-name: revenuemasters-stage-us-east-1-control

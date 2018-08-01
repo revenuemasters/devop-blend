@@ -1,7 +1,8 @@
 include_recipe 'apt'
 include_recipe 'revenuemasters::auditd'
 include_recipe 'revenuemasters::ec2'
-co_name = node['cfn']['properties']['co_name'] rescue '' # falling back to this incase ruby isn't >= 2.3 for hash#dig
+# co_name = node['cfn']['properties']['co_name'] rescue 'revenuemasters' # falling back to this incase ruby isn't >= 2.3 for hash#dig
+co_name = 'revenuemasters'
 
 node.default['aws_cwlogs']['region'] = node['cfn']['vpc']['region_id']
 node.default['aws_cwlogs']['log']['archive_to_s3'] = {

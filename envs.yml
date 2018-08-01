@@ -7,13 +7,14 @@ defaults: &defaults
   app-volume-size: 10
   availability-zones: b,c,d
   co-name: blendlab
+  repo_org: revenuemasters
   cvc-sha: 1eb0a57f63db19da0f798a478f25ed24a06e1ac5 # master
   dedicated-tenancy: false
   default-availability-zone: b
   edi-monitor-sha: ca86c88e90449028867c8c255f2dbd9de4681c75 # master
-  edi-sha: a6222db94d6ff6e4f27432d6ee7e51af9ec4d88e # master
+  edi-sha: a6222db94d6ff6e4f27432d6ee7repo-orgse51af9ec4d88e # master
   edi-ui-sha: 6670aaa458547fe4196777d2315f259376f41be6 # master
-  image-id: ami-3684805c
+  image-id: ami-02b9cbce405e0ac87
   importer-volume-size: 10
   log-retention-in-days: 0
   post-import-alerts-sha: 989b46f67fcb4904f48b61e40e624ec092a4b38d # master
@@ -27,10 +28,10 @@ defaults: &defaults
   worker-num-processes: 2
   worker-volume-size: 10
   mailer:
-      auth: true
-      host: smtp.gmail.com
-      port: 25
-      username: noreply@revenuemasters.com
+    auth: true
+    host: smtp.gmail.com
+    port: 25
+    username: noreply@revenuemasters.com
 
 stablemaster: &stablemaster
   app_sha: 541d0ea1c7b35f316e9a1302bf350adeb8453d1c # stable-master
@@ -45,9 +46,9 @@ devdefaults: &proddefaults
   # CF will try to delete resources if this option is changed (there is a Stack Policy in place to protect against that).
   dedicated-tenancy: true
   default-availability-zone: a
-  hosted-zone-name: 'iphere.'
+  hosted-zone-name: 'blendcopy.revenuemasters.com.'
   key-name: blendlab-dev-us-east-1-control
-  image-id: ami-76a9a11c
+  image-id: ami-02b9cbce405e0ac87
   importer-instance-type: m4.large
   importer-volume-size: 100
   profile: blendlab-dev
@@ -63,10 +64,10 @@ stagedefaults: &stagedefaults
   <<: *defaults
   app-instance-type: m4.large
   chef-sha: d91c786bdbdf6a3af8246d79195df9bdc6ddf3bf # master
-  hosted-zone-name: 'iphere.'
+  hosted-zone-name: 'blendcopy.revenuemasters.com.'
   importer-instance-type: m4.large
-  key-name: blendlab-stage-us-east-1-control
-  profile: blendlab-stage
+  key-name: revenuemasters-stage-us-east-1-control
+  profile: revenuemasters-stage
   rds-instance-type: db.m4.xlarge
   rds-storage-size: 110
   worker-instance-type: m4.2xlarge
@@ -81,23 +82,23 @@ environments:
     s3-cross-account-id: '356595856336' # stage-1 account
     whitelisted-ip-cidrs:
       '22':
-        - '187.189.239.74/32' # ArkusNexus
-        - '189.223.142.206/32' # ArkusNexus
-        - '76.172.81.34/32' # Dylan Vaughn (Ordinary Experts)
-        - '50.198.200.186/32' # Josh Flenniken (Revenue Masters)
-        - '12.35.128.50/32' # San Diego Office (Revenue Masters)
-        - '208.78.140.30/32' # ahweems
+      - '187.189.239.74/32' # ArkusNexus
+      - '189.223.142.206/32' # ArkusNexus
+      - '76.172.81.34/32' # Dylan Vaughn (Ordinary Experts)
+      - '50.198.200.186/32' # Josh Flenniken (Revenue Masters)
+      - '12.35.128.50/32' # San Diego Office (Revenue Masters)
+      - '208.78.140.30/32' # ahweems
       '8822':
-        - '50.198.200.186/32' # Josh Flenniken (Revenue Masters)
+      - '50.198.200.186/32' # Josh Flenniken (Revenue Masters)
     health-check-url: tba
     importer-instance-type: m4.2xlarge
     config:
       edi_app_receivers: 'brian@revenuemasters.com'
       cvc_enabled: true
       ssl_ports: # TODO: have this drive the chef apache2 ports attribute
-        - 443  # wildcard.revenuemasters.com
-        - 8443 # healthpointe.pyramidmaximizer.com
-        # - 9443 # wildcard.revworksrcm.com
+      - 443  # wildcard.revenuemasters.com
+      - 8443 # healthpointe.pyramidmaximizer.com
+      # - 9443 # wildcard.revworksrcm.com
       sites:
         ppmh:
           <<: *stablemaster
@@ -111,7 +112,7 @@ environments:
           facilities:
             1: phoebe_putney_memorial_hospital
           find_account_by_ucrn: true
-          host: ppmh.iphere
+          host: ppmh.blendcopy.revenuemasters.com
           import_cron_hour: 0
           import_cron_minute: 0
           notes_report_enabled: true
@@ -146,7 +147,7 @@ environments:
           facilities:
             1: uintah_basin_healthcare
           find_account_by_ucrn: true
-          host: ubmc.iphere
+          host: ubmc.blendcopy.revenuemasters.com
           import_cron_hour: 7
           import_cron_minute: 10
           insurance_payments_pulled_from_835: true
@@ -167,7 +168,7 @@ environments:
           use_lets_encrypt: true
           claim_import_summary: true
           claim_import_summary_recipients:
-            - brian@revenuemasters.com
+          - brian@revenuemasters.com
           edi_app_enabled: true
           edi_app_facility_code: 'washington_regional_medical_center'
           edi_app_job_minute: 0
@@ -181,7 +182,7 @@ environments:
           facilities:
             1: washington_regional_medical_center
           go_live_date: '2016-03-15'
-          host: wrmc.iphere
+          host: wrmc.blendcopy.revenuemasters.com
           import_cron_hour: 7
           import_cron_minute: 0
           import_oop: false

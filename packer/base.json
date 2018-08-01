@@ -45,7 +45,7 @@
           }
         }
       },
-      "run_list": ["recipe[blendlab::default]"],
+      "run_list": ["recipe[revenuemasters::default]"],
       "install_command": "curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -v 12.5.1"
     }
   ]

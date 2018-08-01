@@ -6,7 +6,9 @@ defaults: &defaults
   app-max-size: 2
   app-volume-size: 10
   availability-zones: b,c,d
-  co-name: blendlab
+  co-name: revenuemasters
+  co_name: revenuemasters
+  aws_acnt_name: blendlab
   repo_org: revenuemasters
   repo-org: revenuemasters
   cvc-sha: 1eb0a57f63db19da0f798a478f25ed24a06e1ac5 # master

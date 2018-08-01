@@ -32,7 +32,7 @@ class CloudformationStack
     end
 
     def get_secret(env, key, options)
-      resp = s3_client(options).get_object(bucket: S3Bucket.secrets_bucket_name(env, options['co-name']), key: key)
+      resp = s3_client(options).get_object(bucket: S3Bucket.secrets_bucket_name(env, options['aws_acnt_name']), key: key)
       resp.body.read
     rescue Aws::S3::Errors::NoSuchKey
       puts "ERROR: No secret found at key: '#{key}'"
@@ -49,6 +49,7 @@ class CloudformationStack
     @cf        = Aws::CloudFormation::Client.new(credentials: @creds, region: options['region'])
     @s3        = Aws::S3::Client.new(credentials: @creds, region: options['region'])
     @co_name   = options.fetch('co-name', 'company')
+    @aws_acnt_name   = options.fetch('aws_acnt_name', 'company')
     @repo_org  = options.fetch('repo-org', @co_name)
     @repo_base = options.fetch('repo-base', "git@github.com:#{@repo_org}")
   end
@@ -132,7 +133,7 @@ class CloudformationStack
   end
 
   def find_or_create_cfn_template_bucket
-    bucket_name = "#{@co_name}-#{@env}-templates"
+    bucket_name = "#{@aws_acnt_name}-#{@env}-templates"
     begin
       @s3.head_bucket(bucket: bucket_name)
     rescue Aws::S3::Errors::NotFound

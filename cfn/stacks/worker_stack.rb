@@ -28,7 +28,7 @@ class WorkerStack < CloudformationStack
         KeyName: options['key-name'],
         PrivateSubnets: options['private-subnets'],
         RootVolumeSize: options['root-volume-size'],
-        SecretsBucket: S3Bucket.secrets_bucket_name(env, options['co-name']),
+        SecretsBucket: S3Bucket.secrets_bucket_name(env, options['aws_acnt_name']),
         SnsAlarmTopicArn: options['sns-alarm-topic'],
         SiteName: site.gsub(/[^0-9a-z]/i, ''),
         WorkerIamProfile: options['iam-instance-profile'],

@@ -9,6 +9,7 @@ The following tools are required:
 - packer: sudo apt install packer
 - ruby gems: sudo gem install activesupport-inflector rails aws-sdk-core aws-sdk
 
+Make sure the Github repo for this devop script has checkbox 'Restrict editing to users in teams with push access only' unchecked
 
 ## Configuration Documentation
 

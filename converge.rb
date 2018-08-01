@@ -13,7 +13,6 @@ def converge!(env, options, profile)
 
   options[:EnvName] = env
   options['profile'] = profile
-
   # a bucket to store s3 logs
   logging_bucket = S3Bucket.logging_bucket(env, options)
 

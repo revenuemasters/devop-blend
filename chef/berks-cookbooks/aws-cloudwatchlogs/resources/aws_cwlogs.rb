@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+=begin
 resource_name :aws_cwlogs if respond_to?(:resource_name)
 provides :aws_cwlogs if respond_to?(:provides)
 
@@ -26,3 +27,4 @@ default_action :add if defined?(default_action)
 attribute :name, :kind_of => String, :name_attribute => true
 attribute :cookbook, :kind_of => String, :default => 'aws-cloudwatchlogs'
 attribute :log, :kind_of => Hash, :required => true, :default => {}
+=end

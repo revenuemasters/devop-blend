@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+=begin
 provides :aws_cwlogs if respond_to?(:provides)
 use_inline_resources if defined?(use_inline_resources)
 
@@ -49,3 +50,4 @@ action :remove do
       notifies :restart, 'service[awslogs]', :delayed
    end
 end
+=end

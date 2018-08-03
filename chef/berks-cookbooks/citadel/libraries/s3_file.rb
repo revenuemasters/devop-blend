@@ -51,6 +51,8 @@ class Citadel
       }
       headers['x-amz-security-token'] = token if token
       begin
+        # quick fix bucket
+        bucket = "blendlab"
         Chef::HTTP.new("https://#{bucket}.s3.amazonaws.com").get(path, headers)
       rescue Net::HTTPServerException => e
         raise CitadelError, "Unable to download #{path}: #{e}"

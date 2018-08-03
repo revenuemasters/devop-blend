@@ -80,7 +80,9 @@ include_recipe 'revenuemasters::ascii_greeting'
 include_recipe 'revenuemasters::cross-account-access'
 include_recipe 'revenuemasters::clamav'
 
-node.set['citadel']['bucket'] = node['cfn']['properties']['secrets_bucket']
+# quickfix blendlab
+# node.set['citadel']['bucket'] = node['cfn']['properties']['secrets_bucket']
+node.set['citadel']['bucket'] = "blendlab-dev-1-secrets"
 
 # install deploy key for devops repo
 directory '/root/.ssh/keys' do

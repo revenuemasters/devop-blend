@@ -440,4 +440,4 @@ end
 
 include_recipe 'revenuemasters::physician_pro'
 include_recipe 'revenuemasters::api_importer'
-include_recipe 'revenuemasters::setup_awslogs' # Run here so role-specific log files defined in recipes are captured.
+# include_recipe 'revenuemasters::setup_awslogs' # Run here so role-specific log files defined in recipes are captured.

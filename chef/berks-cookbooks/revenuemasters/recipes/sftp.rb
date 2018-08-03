@@ -182,4 +182,4 @@ cron 'move incoming files' do
   minute '*/15'
 end
 
-include_recipe 'revenuemasters::setup_awslogs' # Run here so role-specific log files defined in recipes are captured.
+# include_recipe 'revenuemasters::setup_awslogs' # Run here so role-specific log files defined in recipes are captured.

@@ -44,7 +44,7 @@ devdefaults: &proddefaults
   app-instance-type: m4.large
   app-volume-size: 50
   availability-zones: a,b,c
-  chef-sha: 932958c5506a88e21329074bbcf85ebeda29f461 # master
+  chef-sha: efe387a83861c9e8870668c893c48362f8556643 # master
   # Tenancy was changed to 'default' via CLI: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html#change-tenancy-vpc
   # CF will try to delete resources if this option is changed (there is a Stack Policy in place to protect against that).
   dedicated-tenancy: true
@@ -66,7 +66,7 @@ devdefaults: &proddefaults
 stagedefaults: &stagedefaults
   <<: *defaults
   app-instance-type: m4.large
-  chef-sha: 932958c5506a88e21329074bbcf85ebeda29f461 # master
+  chef-sha: efe387a83861c9e8870668c893c48362f8556643 # master
   hosted-zone-name: 'blendcopy.revenuemasters.com.'
   importer-instance-type: m4.large
   key-name: revenuemasters-stage-us-east-1-control

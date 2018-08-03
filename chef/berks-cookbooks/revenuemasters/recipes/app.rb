@@ -3,7 +3,9 @@ include_recipe 'revenuemasters::setup_database'
 include_recipe 'revenuemasters::apache2'
 include_recipe 'revenuemasters::php5'
 
-co_name = node['cfn']['properties']['co_name'] rescue '' # falling back to this incase ruby isn't >= 2.3 for hash#dig
+# co_name = node['cfn']['properties']['co_name'] rescue '' # falling back to this incase ruby isn't >= 2.3 for hash#dig
+co_name = "revenuemasters"
+#todo quickfix
 repo_base = node['cfn']['properties']['repo_base'] rescue ''
 
 apache_module 'php7.2' do

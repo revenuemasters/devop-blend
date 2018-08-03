@@ -1,6 +1,8 @@
 # importer recipe
 
-ssh_known_hosts_entry node['cfn']['properties']['sftp_dns']
+# todo quickfix
+# ssh_known_hosts_entry node['cfn']['properties']['sftp_dns']
+ssh_known_hosts_entry sftp-dev-1.blendcopy.revenuemasters.com
 
 # pear libraries needed for import automation scripts
 include_recipe 'revenuemasters::php5'

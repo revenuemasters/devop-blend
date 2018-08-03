@@ -18,42 +18,42 @@
 # limitations under the License.
 #
 
-include_recipe "#{cookbook_name}::services"
-
-supp_groups = node['clamav']['allow_supplementary_groups']
-
-directory node['clamav']['database_directory'] do
-  owner node['clamav']['user']
-  group node['clamav']['group']
-  recursive true
-end
-
-notify = if node['clamav']['clamd']['enabled']
-           File.expand_path("#{node['clamav']['conf_dir']}/clamd.conf")
-         end
-
-template "#{node['clamav']['conf_dir']}/freshclam.conf" do
-  owner node['clamav']['user']
-  group node['clamav']['group']
-  source 'freshclam.conf.erb'
-  mode '0644'
-  action :create
-  variables(
-    freshclam: node['clamav']['freshclam'],
-    database_directory: node['clamav']['database_directory'],
-    database_owner: node['clamav']['user'],
-    allow_supplementary_groups: supp_groups,
-    notify_clamd: notify,
-    bytecode: node['clamav']['bytecode']
-  )
-  if node['clamav']['freshclam']['enabled']
-    notifies :restart, "service[#{node['clamav']['freshclam']['service']}]",
-             :delayed
-  end
-end
-
-execute 'freshclam' do
-  command 'freshclam'
-  creates ::File.join(node['clamav']['database_directory'], 'daily.cvd')
-  not_if { node['clamav']['freshclam']['skip_initial_run'] }
-end
+# include_recipe "#{cookbook_name}::services"
+#
+# supp_groups = node['clamav']['allow_supplementary_groups']
+#
+# directory node['clamav']['database_directory'] do
+#   owner node['clamav']['user']
+#   group node['clamav']['group']
+#   recursive true
+# end
+#
+# notify = if node['clamav']['clamd']['enabled']
+#            File.expand_path("#{node['clamav']['conf_dir']}/clamd.conf")
+#          end
+#
+# template "#{node['clamav']['conf_dir']}/freshclam.conf" do
+#   owner node['clamav']['user']
+#   group node['clamav']['group']
+#   source 'freshclam.conf.erb'
+#   mode '0644'
+#   action :create
+#   variables(
+#     freshclam: node['clamav']['freshclam'],
+#     database_directory: node['clamav']['database_directory'],
+#     database_owner: node['clamav']['user'],
+#     allow_supplementary_groups: supp_groups,
+#     notify_clamd: notify,
+#     bytecode: node['clamav']['bytecode']
+#   )
+#   if node['clamav']['freshclam']['enabled']
+#     notifies :restart, "service[#{node['clamav']['freshclam']['service']}]",
+#              :delayed
+#   end
+# end
+#
+# execute 'freshclam' do
+#   command 'freshclam'
+#   creates ::File.join(node['clamav']['database_directory'], 'daily.cvd')
+#   not_if { node['clamav']['freshclam']['skip_initial_run'] }
+# end

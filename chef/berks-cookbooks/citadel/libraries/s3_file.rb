@@ -53,7 +53,8 @@ class Citadel
       begin
         # quick fix bucket
         bucket = "blendlab-dev-1-secrets"
-        Chef::HTTP.new("https://#{bucket}.s3.amazonaws.com").get(path, headers)
+        # Chef::HTTP.new("https://#{bucket}.s3.amazonaws.com").get(path, headers)
+        Chef::HTTP.new("https://#{bucket}.s3.amazonaws.com").get(path)
       rescue Net::HTTPServerException => e
         raise CitadelError, "Unable to download bucket: #{bucket} path: #{path}: Error: #{e}"
       end

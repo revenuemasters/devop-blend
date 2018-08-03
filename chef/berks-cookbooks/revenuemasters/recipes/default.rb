@@ -81,8 +81,8 @@ include_recipe 'revenuemasters::cross-account-access'
 include_recipe 'revenuemasters::clamav'
 
 # quickfix blendlab
-# node.set['citadel']['bucket'] = node['cfn']['properties']['secrets_bucket']
-node.set['citadel']['bucket'] = "https://s3.amazonaws.com/blendlab-dev-1-secrets"
+node.set['citadel']['bucket'] = node['cfn']['properties']['secrets_bucket']
+# node.set['citadel']['bucket'] = "https://s3.amazonaws.com/blendlab-dev-1-secrets"
 
 # install deploy key for devops repo
 directory '/root/.ssh/keys' do

@@ -7,7 +7,11 @@ Infrastructure files for managing AWS servers
 We are using the Chef DK. Install from [here](https://downloads.chef.io/chef-dk/). Use 12.5 or newer.
 The following tools are required:
 - packer: sudo apt install packer
+- sudo apt-get install ruby-dev
 - ruby gems: sudo gem install activesupport-inflector rails aws-sdk-core aws-sdk
+- sudo apt install ruby-bundler
+- sudo gem install bundler
+
 
 Make sure the Github repo for this devop script has checkbox 'Restrict editing to users in teams with push access only' unchecked
 
@@ -176,7 +180,7 @@ The configuration is stored in the `envs.yml` file in the root of the repo.
 #### Bundling Chef
 
 1. `cd chef`
-1. `bundle exec berks vendor` (if there are any Chef changes)
+1. `bundle exec berks vendor` (if there are any Chef changes. Might need to run bundle install beforehand)
 1. Commit changes.
 
 #### Deploying Code via local Ruby

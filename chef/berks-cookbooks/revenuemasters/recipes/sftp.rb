@@ -78,6 +78,7 @@ cookbook_file '/root/scripts/upload-host-keys.sh' do
   action :create
 end
 
+=begin
 ['dsa', 'ecdsa', 'ed25519', 'rsa'].each do |key_type|
   execute "/root/scripts/upload-host-keys.sh -s /etc/ssh/ssh_host_#{key_type}_key -d s3://#{node['citadel']['bucket']}/sftp-ssh_host_#{key_type}_key >> /root/scripts/upload-ssh-keys.log 2>&1"
 
@@ -98,6 +99,7 @@ end
     content lazy{citadel["sftp-ssh_host_#{key_type}_key.pub"]}
   end
 end
+=end
 
 # enable ssh from internet to importer via ip chains
 include_recipe 'sysctl::default'

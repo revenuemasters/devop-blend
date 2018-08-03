@@ -8,7 +8,9 @@ hostsfile_entry node['cfn']['properties']['importer_private_ip'] do
   action :create
 end if node['cfn']['properties']['importer_private_ip']
 
-ssh_known_hosts_entry node['cfn']['properties']['importer_private_ip']
+# todo quickfix
+# ssh_known_hosts_entry node['cfn']['properties']['importer_private_ip']
+ssh_known_hosts_entry "10.0.6.67"
 
 chroot_base = '/encrypted/sftp'
 

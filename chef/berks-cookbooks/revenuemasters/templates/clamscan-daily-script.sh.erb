@@ -5,7 +5,8 @@ HOST="$(hostname --long)";
 
 # Update ClamAV database
 echo "Looking for ClamAV database updates...";
-freshclam --quiet;
+#freshclam --quiet;
+#todo temp disable
 
 TODAY=$(date +%u);
 

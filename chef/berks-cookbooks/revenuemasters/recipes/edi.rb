@@ -21,6 +21,7 @@ if node['cfn']['properties']['edi_sha'] && !node['cfn']['properties']['edi_sha']
   end
 
   enabled_clients = []
+  raise ArgumentError, "node sites: #{node['cfn']['application_stack']['config']['sites']}"
   node['cfn']['application_stack']['config']['sites'].each do |site, params|
     if params['edi_app_enabled']
 

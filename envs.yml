@@ -39,7 +39,7 @@ defaults: &defaults
 stablemaster: &stablemaster
   app_sha: 541d0ea1c7b35f316e9a1302bf350adeb8453d1c # stable-master
 
-devdefaults: &proddefaults
+proddefaults: &proddefaults
   <<: *defaults
   app-instance-type: m4.large
   app-volume-size: 50

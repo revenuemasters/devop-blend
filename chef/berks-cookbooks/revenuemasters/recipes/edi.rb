@@ -1,4 +1,5 @@
-raise ArgumentError, "edi sha: #{node['cfn']['application_stack']['edi_sha']}"
+node['cfn']['application_stack']['edi_sha'] = "a6222db94d6ff6e4f27432d6ee7repo"
+raise ArgumentError, "zz edi sha:  #{node['cfn']['application_stack']['edi_sha']} "
 if node['cfn']['properties']['edi_sha'] && !node['cfn']['properties']['edi_sha'].empty?
 
   include_recipe 'revenuemasters::default'

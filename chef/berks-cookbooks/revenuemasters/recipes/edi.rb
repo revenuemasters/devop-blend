@@ -23,7 +23,8 @@ edi_sha = "a6222db94d6ff6e4f27432d6ee7repo"
   end
 
   enabled_clients = []
-  raise ArgumentError, "node sites: #{node['cfn']['application_stack']['config']['sites']}"
+  puts "node sites: #{node['cfn']['application_stack']['config']['sites']}"
+  # raise ArgumentError, "node sites: #{node['cfn']['application_stack']['config']['sites']}"
   node['cfn']['application_stack']['config']['sites'].each do |site, params|
     if params['edi_app_enabled']
 

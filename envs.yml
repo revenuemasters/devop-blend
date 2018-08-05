@@ -44,7 +44,7 @@ proddefaults: &proddefaults
   app-instance-type: m4.large
   app-volume-size: 50
   availability-zones: a,b,c
-  chef-sha: 291ffef7c89c6caba6cbf9fb13b2a9f9790706c7 # master
+  chef-sha: 894bc588b07014317131c94d951b14f96aee227a # master
   # Tenancy was changed to 'default' via CLI: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html#change-tenancy-vpc
   # CF will try to delete resources if this option is changed (there is a Stack Policy in place to protect against that).
   dedicated-tenancy: true

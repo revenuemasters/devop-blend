@@ -51,7 +51,7 @@ proddefaults: &proddefaults
   default-availability-zone: a
   hosted-zone-name: 'blendcopy.revenuemasters.com.'
   key-name: blendlab-dev-us-east-1-control
-  image-id: ami-02b9cbce405e0ac87
+  image-id: ami-0e0428b16c0113d68
   importer-instance-type: m4.large
   importer-volume-size: 100
   profile: blendlab-dev

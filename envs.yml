@@ -17,7 +17,7 @@ defaults: &defaults
   edi-monitor-sha: ca86c88e90449028867c8c255f2dbd9de4681c75 # master
   edi-sha: a6222db94d6ff6e4f27432d6ee7repo-orgse51af9ec4d88e # master
   edi-ui-sha: 6670aaa458547fe4196777d2315f259376f41be6 # master
-  image-id: ami-02b9cbce405e0ac87
+  image-id: ami-0e0428b16c0113d68
   importer-volume-size: 10
   log-retention-in-days: 0
   post-import-alerts-sha: 989b46f67fcb4904f48b61e40e624ec092a4b38d # master

@@ -7,10 +7,9 @@ Infrastructure files for managing AWS servers
 We are using the Chef DK. Install from [here](https://downloads.chef.io/chef-dk/). Use 12.5 or newer.
 The following tools are required:
 - packer: sudo apt install packer
-- sudo apt-get install ruby-dev
+- sudo apt-get install ruby ruby-dev
 - ruby gems: sudo gem install activesupport-inflector rails aws-sdk-core aws-sdk
-- sudo apt install ruby-bundler
-- sudo gem install bundler
+- sudo apt install ruby-bundler bundler
 
 
 Make sure the Github repo for this devop script has checkbox 'Restrict editing to users in teams with push access only' unchecked
@@ -155,6 +154,7 @@ The configuration is stored in the `envs.yml` file in the root of the repo.
 1. Follow the instructions below to add clients to your new environment.
 1. Follow the instructions below to add secrets for a `rmedi` client. This isn't actually a client, but it needs the same secrets.
 1. Change directory into ./packer. Use the `run-packer-with-profile.rb` script to create a new AMI for the environment. If needed, make sure secrets bucket are available for download
+1. The new AMI ID should be present in EC2 console
 1. Add the new AMI ID to `envs.yml` in the `image-id` field.
 1. Run Converge again. It should get past the secrets errors and create a new application in CodeDeploy.
 1. Follow [these instructions](http://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-partners-github.html#behaviors-authentication) to authorize the new CodeDeploy application in GitHub.

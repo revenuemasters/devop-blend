@@ -6,8 +6,8 @@ username = 'admin'
 password = citadel["rds-admin-password"].chomp
 
 # quickfix hostname
-# hostname = node['cfn']['properties']['database_host']
-hostname = "dd1mnaoqydqqmah.cylmcithw7vx.us-east-1.rds.amazonaws.com"
+hostname = node['cfn']['properties']['database_host']
+# hostname = "dd1mnaoqydqqmah.cylmcithw7vx.us-east-1.rds.amazonaws.com"
 
 mysql_cmd = "mysql --host=#{hostname} --user=#{username} --password=#{password}"
 

@@ -34,6 +34,7 @@
     {
       "type": "chef-solo",
       "cookbook_paths": ["../chef/berks-cookbooks"],
+      "data_bags_path": "../chef/data_bags",
       "json": {
         "citadel": {
           "access_key_id": "{{user `aws_access_key`}}",

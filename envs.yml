@@ -44,7 +44,7 @@ proddefaults: &proddefaults
   app-instance-type: m4.large
   app-volume-size: 50
   availability-zones: a,b,c
-  chef-sha: b92ecd6b099df1683ae9028c06283ccab11405b3 # master
+  chef-sha: 3a0ff66beffe42c123e979b5fcf437448d82e581 # master
   # Tenancy was changed to 'default' via CLI: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html#change-tenancy-vpc
   # CF will try to delete resources if this option is changed (there is a Stack Policy in place to protect against that).
   dedicated-tenancy: true
@@ -63,20 +63,20 @@ proddefaults: &proddefaults
   worker-num-processes: 8
   worker-volume-size: 100
 
-stagedefaults: &stagedefaults
-  <<: *defaults
-  app-instance-type: m4.large
-  chef-sha: b92ecd6b099df1683ae9028c06283ccab11405b3 # master
-  hosted-zone-name: 'blendcopy.revenuemasters.com.'
-  importer-instance-type: m4.large
-  key-name: revenuemasters-stage-us-east-1-control
-  profile: revenuemasters-stage
-  rds-instance-type: db.m4.xlarge
-  rds-storage-size: 110
-  worker-instance-type: m4.2xlarge
-  worker-num-processes: 8
-  worker-volume-size: 100
-
+#stagedefaults: &stagedefaults
+#  <<: *defaults
+#  app-instance-type: m4.large
+#  chef-sha: 3a0ff66beffe42c123e979b5fcf437448d82e581 # master
+#  hosted-zone-name: 'blendcopy.revenuemasters.com.'
+#  importer-instance-type: m4.large
+#  key-name: revenuemasters-stage-us-east-1-control
+#  profile: revenuemasters-stage
+#  rds-instance-type: db.m4.xlarge
+#  rds-storage-size: 110
+#  worker-instance-type: m4.2xlarge
+#  worker-num-processes: 8
+#  worker-volume-size: 100
+#
 
 environments:
   # Dev - copy of RVM Production
@@ -155,7 +155,6 @@ environments:
           import_cron_minute: 10
           insurance_payments_pulled_from_835: true
           invert_payment_report_amounts: true
-          invert_writeoff_value: false
           logo: ubmc_logo.png
           master_separator: '|'
           sanitize_payor_names: true

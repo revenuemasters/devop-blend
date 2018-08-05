@@ -4,7 +4,8 @@ package 'mysql-client-5.6'
 
 username = 'admin'
 password = citadel["rds-admin-password"].chomp
-hostname = node['cfn']['properties']['database_host']
+# hostname = node['cfn']['properties']['database_host']
+hostname = "dd10hziikfn4yxw.cylmcithw7vx.us-east-1.rds.amazonaws.com"
 
 mysql_cmd = "mysql --host=#{hostname} --user=#{username} --password=#{password}"
 

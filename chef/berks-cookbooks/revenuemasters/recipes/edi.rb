@@ -59,7 +59,7 @@ edi_sha = "a6222db94d6ff6e4f27432d6ee7repo"
 
   # todo mailconfig
   # mailer_config = node['cfn']['application_stack']['config']['mailer']
-  mailer_config = {:auth => true, :host => "smtp.gmail.com", port: 25, username: 'someids@gmail.com'}
+  mailer_config = {"auth" => true, "host" => "smtp.gmail.com", "port" => 25, "username" => 'someids@gmail.com'}
   template '/var/www/edi/shared/dot-env' do
     source 'dot-env-edi.erb'
     user 'root'
